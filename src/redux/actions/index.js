@@ -11,3 +11,10 @@ export function searchItem(item){
         payload:item
     }
 }
+
+export function getItem(id){
+    return {
+        type:'GET_ID',
+        payload:id
+    }
+}

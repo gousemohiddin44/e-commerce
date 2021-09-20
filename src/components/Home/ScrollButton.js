@@ -9,10 +9,10 @@ const useStyles = makeStyles({
         bottom:'0',
         left:'95%',
         backgroundColor:'initial',
-        width:'40px',
+        width:'32px',
         height:'55px',
         color:'red',
-        borderRadius:'50%',
+        borderRadius:'55%',
         '&:hover':{
             backgroundColor:'red',
             color:'white'

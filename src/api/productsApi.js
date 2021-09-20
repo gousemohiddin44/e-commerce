@@ -4,6 +4,7 @@ function useProductsApi(){
 
     const [data,setData] = useState([]);
     const [error,setError] = useState(false);
+    const [loading,setLoading] = useState(true);
 
     useEffect(()=>{
         async function fetchProducts(){
@@ -11,10 +12,12 @@ function useProductsApi(){
             
             if(res.status === 404){
                 setError(true);
+                setLoading(false);
             } else {
             const data = await res.json();
             setData(data);
             setError(false);
+            setLoading(false);
             }                   
 
         }
@@ -22,7 +25,7 @@ function useProductsApi(){
         fetchProducts();
     },[]);
 
-    return [data,error];
+    return [data,error,loading];
        
 };
 

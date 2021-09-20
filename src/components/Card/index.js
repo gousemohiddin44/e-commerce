@@ -3,8 +3,9 @@ import {makeStyles} from '@material-ui/core/styles';
 import { Favorite, ShoppingCart } from '@material-ui/icons';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import {addItem} from '../../redux/actions';
+import {addItem, getItem} from '../../redux/actions';
 
 const useStyles = makeStyles({
     card:{
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
 
 function CardItem({product}){
 
-    console.log(product);
+    // console.log(product);
 
     const classes = useStyles();
     const [fav,setFav] = useState(false);
@@ -58,10 +59,14 @@ function CardItem({product}){
         setCartClick(!cartClick);
     }
 
+    function handleGetProductId(id){
+        dispatch(getItem(id))
+    }
+
     return(
         <Card className={classes.card}>
-            <CardActionArea >
-                <img className={classes.img} src={product.image} alt="iphone" />
+           <CardActionArea onClick={()=> handleGetProductId(product.id)} >
+           <Link to={`/product/${product.id}`}><img className={classes.img} src={product.image} alt="iphone" /> </Link>
                 <CardContent>
                     <Typography variant="h6" component="h2">
                         {product.category}
